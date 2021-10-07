@@ -1,0 +1,43 @@
+*{
+    box-sizing: border-box;
+}
+.conteiner{
+    width:250px;
+    height:300px;
+    background-color:rgb(228, 228, 57);
+    position:fixed;
+    left:50%;
+    transform:translatex(-50%);
+    padding: 5px;
+}
+
+h1{
+    text-align:center;
+    margin-top: 0%;
+    font-size:20pt;
+}
+.conteiner_interno{
+    width: 240px;
+    height: 250px;
+    background-color: rgb(219, 219, 231);
+    position:fixed;
+    left:50%;
+    transform:translatex(-50%);
+    top: 45px;
+    padding-top:15px;
+}
+.cedula{
+    display: inline-block;
+    background-color: rgb(230, 146, 87);
+    width: 70px;
+    height: 70px;
+    position: relative;
+    transform:translatex(15%);
+    padding:1px;
+    color:black;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    background-size: 100% 100%;
+    
+}
+
