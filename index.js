@@ -67,8 +67,8 @@ document.querySelectorAll('button.cedula').forEach(function(button){
          }
              rodada = !rodada
              jogadas+=1
-             console.log(jogadas)
-             console.table(tabuleiro)
+            // console.log(jogadas)
+            // console.table(tabuleiro)
             
                 testeVitoria()
             
