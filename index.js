@@ -30,7 +30,7 @@ document.querySelectorAll('button.cedula').forEach(function(button){
  function jogar()
   {     
     
-      let img = rodada == true  ? "url(imagen/x.png.png)" : "url(imagen/O.png.png)";   
+      let img = rodada == true  ? "url(imagen/x.png.png)" : "url(imagen/o.png.png)";   
           cedulas = document.getElementById(id).style.backgroundImage = img;
                     document.getElementById(id).disabled = true
       let jogador = rodada == true ? jogadorX : jogadorO    
