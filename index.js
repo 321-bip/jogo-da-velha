@@ -9,14 +9,7 @@ let velha = true
 const tabuleiro = [ ["","",""],
                     ["","",""],
                     ["","",""], ]  
-/*const conbinasoesVitoria = [ [0,1,2],
-                             [3,4,5],
-                             [6,7,8],
-                             [0,3,6],
-                             [1,4,7],
-                             [2,5,8],
-                             [0,4,8],
-                             [2,4,6], ];*/
+
                            
 document.querySelectorAll('button.cedula').forEach(function(button){
     
@@ -29,7 +22,6 @@ document.querySelectorAll('button.cedula').forEach(function(button){
                   
  function jogar()
   {     
-    
       let img = rodada == true  ? "url(imagen/x.png.png)" : "url(imagen/o.png.png)";   
           cedulas = document.getElementById(id).style.backgroundImage = img;
                     document.getElementById(id).disabled = true
@@ -67,12 +59,9 @@ document.querySelectorAll('button.cedula').forEach(function(button){
          }
              rodada = !rodada
              jogadas+=1
-            // console.log(jogadas)
-            // console.table(tabuleiro)
-            
-                testeVitoria()
-            
-  }
+             velha = true
+             testeVitoria()
+}
 
 function testeVitoria()
  {
@@ -158,9 +147,45 @@ function testeVitoria()
     else if(velha == true && jogadas == 9)
      {
        alert("enpato")
-     } 
- }
+     }
+     
+     if(velha == false)
+     {
+       jogadas = 0
+      for(let i = 0; i <= 8; i++)
+       {
+        document.getElementById(i).disabled = true
+       }
+         
+     }
+  }
 
-             
-        
-  
+function reset()
+ {
+   jogar
+   velha == true
+   jogadas = 0
+   for(let linha = 0; linha <= 2; linha++ )
+    {
+      for(let coluna = 0; coluna <= 2; coluna++ )
+       {
+          tabuleiro[linha][coluna] = ""
+       }
+    }
+      
+
+   for(let i = 0; i <= 8; i++)
+    {
+      
+       cedulas = document.getElementById(i).style.backgroundImage = null
+                 document.getElementById(i).disabled = false
+    } 
+     console.log( jogadas = 0)
+     console.log(velha)
+  }             
+       document.getElementById("reset").addEventListener("click",reset)
+       
+function jogadorMaquina()
+ {
+
+ } 
