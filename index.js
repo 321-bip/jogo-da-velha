@@ -5,7 +5,10 @@ let id;
 let cedulas;
 let rodada = true;
 let jogadas = 0;
-let velha = true
+let velha = true;
+let maquina = false;
+let jogador;
+let img; 
 const tabuleiro = [ ["","",""],
                     ["","",""],
                     ["","",""], ]  
@@ -17,6 +20,7 @@ document.querySelectorAll('button.cedula').forEach(function(button){
           el = event.target
           id = el.id;
           jogar()
+          //jogadorMaquina()
      });
  });
                   
@@ -25,8 +29,7 @@ document.querySelectorAll('button.cedula').forEach(function(button){
       let img = rodada == true  ? "url(imagen/x.png.png)" : "url(imagen/o.png.png)";   
           cedulas = document.getElementById(id).style.backgroundImage = img;
                     document.getElementById(id).disabled = true
-      let jogador = rodada == true ? jogadorX : jogadorO    
-              
+          jogador = rodada == true ? jogadorX : jogadorO 
         switch (id)
          {
            case "0":
@@ -61,6 +64,8 @@ document.querySelectorAll('button.cedula').forEach(function(button){
              jogadas+=1
              velha = true
              testeVitoria()
+             jogadorMaquina() 
+            
 }
 
 function testeVitoria()
@@ -180,12 +185,35 @@ function reset()
        cedulas = document.getElementById(i).style.backgroundImage = null
                  document.getElementById(i).disabled = false
     } 
-     console.log( jogadas = 0)
-     console.log(velha)
+     
   }             
        document.getElementById("reset").addEventListener("click",reset)
        
+       document.getElementById("maquina").addEventListener("click", function(){
+       document.getElementById("maquina").disabled = true;
+       maquina = true 
+       console.log(maquina)
+      })
+       
 function jogadorMaquina()
  {
+        
+     let idMaquina = Math.floor( Math.random()*9);
+         id = idMaquina.toString();
+      if(maquina == true)
+       {
+         setTimeout(jogar,1000);
+         cedulas = document.getElementById(id).style.backgroundImage = img;
+         maquina = false;
+       }
+      else
+       {
+         maquina = true
+       }  
+         
+   console.log(maquina)
+  
+ }
+    
+ 
 
- } 
