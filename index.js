@@ -8,10 +8,14 @@ let jogadas = 0;
 let velha = true;
 let maquina = false;
 let jogador;
-let img; 
+let img;
+let idMaquina;
+let indice;
+let estado;
+let posisaoSorteadas = []; 
 const tabuleiro = [ ["","",""],
                     ["","",""],
-                    ["","",""], ]  
+                    ["","",""], ];  
 
                            
 document.querySelectorAll('button.cedula').forEach(function(button){
@@ -20,200 +24,273 @@ document.querySelectorAll('button.cedula').forEach(function(button){
           el = event.target
           id = el.id;
           jogar()
-          //jogadorMaquina()
      });
  });
-                  
- function jogar()
-  {     
+           
+function jogar()
+ {     
       let img = rodada == true  ? "url(imagen/x.png.png)" : "url(imagen/o.png.png)";   
-          cedulas = document.getElementById(id).style.backgroundImage = img;
-                    document.getElementById(id).disabled = true
-          jogador = rodada == true ? jogadorX : jogadorO 
+          jogador = rodada == true ? jogadorX : jogadorO; 
+
         switch (id)
          {
-           case "0":
-            tabuleiro[0][0] = jogador;
-           break;
-           case "1":
-            tabuleiro[0][1] = jogador;
-           break;
-           case "2":
-            tabuleiro[0][2] = jogador;
-           break;  
-           case "3":
-            tabuleiro[1][0] = jogador;
-           break;
-           case "4":
-            tabuleiro[1][1] = jogador;
-           break;
-           case "5":
-            tabuleiro[1][2] = jogador;
-           break;
-           case "6":
-            tabuleiro[2][0] = jogador;
-           break;
-           case "7":
-            tabuleiro[2][1] = jogador;
-           break; 
-           case "8":
-            tabuleiro[2][2] = jogador;
-           break;
+            case "0":
+             tabuleiro[0][0] = jogador;
+            break;
+            case "1":
+             tabuleiro[0][1] = jogador;
+            break;
+            case "2":
+             tabuleiro[0][2] = jogador;
+            break;  
+            case "3":
+             tabuleiro[1][0] = jogador;
+            break;
+            case "4":
+             tabuleiro[1][1] = jogador;
+            break;
+            case "5":
+             tabuleiro[1][2] = jogador;
+            break;
+            case "6":
+             tabuleiro[2][0] = jogador;
+            break;
+            case "7":
+             tabuleiro[2][1] = jogador;
+            break; 
+            case "8":
+             tabuleiro[2][2] = jogador;
+            break;
          }
-             rodada = !rodada
-             jogadas+=1
-             velha = true
-             testeVitoria()
-             jogadorMaquina() 
             
-}
+            posisaoSorteadas.push(id);
+            console.log(posisaoSorteadas);
+            cedulas = document.getElementById(id).style.backgroundImage = img;
+            document.getElementById(id).disabled = true;
+            rodada = !rodada;
+            jogadas+=1;
+            velha = true;
+            testeVitoria();
+
+             if(document.getElementById("maquina").disabled == true)
+              {
+                broqueioCedulas();
+                estado = false;
+                sorteioNumeroAliatorio();
+              }
+ }
 
 function testeVitoria()
  {
+    
     if(tabuleiro[0][0] == jogadorX && tabuleiro[0][1] == jogadorX && tabuleiro[0][2] == jogadorX)
      {
-       velha = false
-       alert(jogadorX)
+       velha = false;
+       rodada = true;
+       alert(`Jogador ${jogadorX} ganhou`);
      }
     else if(tabuleiro[1][0] == jogadorX && tabuleiro[1][1] == jogadorX && tabuleiro[1][2] == jogadorX)
      {
-       velha = false
-       alert(jogadorX)
+       velha = false;
+       rodada = true;
+       alert(`Jogador ${jogadorX} ganhou`);
      }
     else if(tabuleiro[2][0] == jogadorX && tabuleiro[2][1] == jogadorX && tabuleiro[2][2] == jogadorX)
      {
-       velha = false
-       alert(jogadorX)
+       velha = false;
+       rodada = true;
+       alert(`Jogador ${jogadorX} ganhou`);
      }
     else if(tabuleiro[0][0] == jogadorX && tabuleiro[1][0] == jogadorX && tabuleiro[2][0] == jogadorX)
      {
-        velha = false
-        alert(jogadorX)
+        velha = false;
+        rodada = true;
+        alert(`Jogador ${jogadorX} ganhou`);
      }
     else if(tabuleiro[0][1] == jogadorX && tabuleiro[1][1] == jogadorX && tabuleiro[2][1] == jogadorX)
      {
-       velha = false
-       alert(jogadorX)
+       velha = false;
+       rodada = true;
+       alert(`Jogador ${jogadorX} ganhou`);
      }
     else if(tabuleiro[0][2] == jogadorX && tabuleiro[1][2] == jogadorX && tabuleiro[2][2] == jogadorX)
      {
-       velha = false
-       alert(jogadorX)
+       velha = false;
+       rodada = true;
+       alert(`Jogador ${jogadorX} ganhou`);
      }
     else if(tabuleiro[0][2] == jogadorX && tabuleiro[1][1] == jogadorX && tabuleiro[2][0] == jogadorX)
      {
-       velha = false
-       alert(jogadorX)
+       velha = false;
+       rodada = true;
+       alert(`Jogador ${jogadorX} ganhou`);
      }
     else if(tabuleiro[0][0] == jogadorX && tabuleiro[1][1] == jogadorX && tabuleiro[2][2] == jogadorX)
      {
-       velha = false
-       alert(jogadorX)
+       velha = false;
+       rodada = true;
+       alert(`Jogador ${jogadorX} ganhou`);
      }
      if(tabuleiro[0][0] == jogadorO && tabuleiro[0][1] == jogadorO && tabuleiro[0][2] == jogadorO)
      {
-        velha = false
-        alert(jogadorO)
+        velha = false;
+        rodada = false;
+        alert(`Jogador ${jogadorO} ganhou`);
      }
     else if(tabuleiro[1][0] == jogadorO && tabuleiro[1][1] == jogadorO && tabuleiro[1][2] == jogadorO)
      {
-                alert(jogadorO)
+       velha = false;
+       rodada = false;
+       alert(`Jogador ${jogadorO} ganhou`);
      }
     else if(tabuleiro[2][0] == jogadorO && tabuleiro[2][1] == jogadorO && tabuleiro[2][2] == jogadorO)
      {
-       velha = false
-       alert(jogadorO)
+       velha = false;
+       rodada = false;
+       alert(`Jogador ${jogadorO} ganhou`);
      }
     else if(tabuleiro[0][0] == jogadorO && tabuleiro[1][0] == jogadorO && tabuleiro[2][0] == jogadorO)
      {
-        velha = false
-        alert(jogadorO)
+        velha = false;
+        rodada = false;
+        alert(`Jogador ${jogadorO} ganhou`);
      }
     else if(tabuleiro[0][1] == jogadorO && tabuleiro[1][1] == jogadorO && tabuleiro[2][1] == jogadorO)
      {
-       velha = false
-       alert(jogadorO)
+       velha = false;
+       rodada = false;
+       alert(`Jogador ${jogadorO} ganhou`);
      }
     else if(tabuleiro[0][2] == jogadorO && tabuleiro[1][2] == jogadorO && tabuleiro[2][2] == jogadorO)
      {
-       velha = false
-       alert(jogadorO)
+       velha = false;
+       rodada = false;
+       alert(`Jogador ${jogadorO} ganhou`);
      }
     else if(tabuleiro[0][2] == jogadorO && tabuleiro[1][1] == jogadorO && tabuleiro[2][0] == jogadorO)
      {
-        velha = false
-        alert(jogadorO)
+        velha = false;
+        rodada = false;
+        alert(`Jogador ${jogadorO} ganhou`);
      }
     else if(tabuleiro[0][0] == jogadorO && tabuleiro[1][1] == jogadorO && tabuleiro[2][2] == jogadorO)
      {
-        velha = false
-        alert(jogadorO)
+        velha = false;
+        rodada = false;
+        alert(`Jogador ${jogadorO} ganhou`);
      }
     else if(velha == true && jogadas == 9)
      {
-       alert("enpato")
+        velha = false;
+        rodada = true;
+        alert("enpato");
      }
-     
-     if(velha == false)
-     {
-       jogadas = 0
-      for(let i = 0; i <= 8; i++)
+     if(document.getElementById("maquina").disabled == true || velha == false)
        {
-        document.getElementById(i).disabled = true
+         broqueioCedulas()
        }
-         
-     }
-  }
+ }
 
 function reset()
  {
-   jogar
-   velha == true
-   jogadas = 0
-   for(let linha = 0; linha <= 2; linha++ )
+    jogar;
+    velha == true;
+    jogadas = 0;
+    posisaoSorteadas = [];
+
+   for(let linha = 0; linha <= 2; linha++)
     {
-      for(let coluna = 0; coluna <= 2; coluna++ )
+      for(let coluna = 0; coluna <= 2; coluna++)
        {
           tabuleiro[linha][coluna] = ""
        }
     }
       
-
    for(let i = 0; i <= 8; i++)
     {
       
-       cedulas = document.getElementById(i).style.backgroundImage = null
-                 document.getElementById(i).disabled = false
+       cedulas = document.getElementById(i).style.backgroundImage = null;
+                 document.getElementById(i).disabled = false;
     } 
+
+    if(rodada == false && document.getElementById("maquina").disabled == true)
+     {
+       broqueioCedulas();
+       setTimeout(jogar,1000);
+     }
      
-  }             
-       document.getElementById("reset").addEventListener("click",reset)
+  }
+
+       document.getElementById("reset").addEventListener("click",reset);
        
        document.getElementById("maquina").addEventListener("click", function(){
+       document.getElementById("amigo").disabled = false;
        document.getElementById("maquina").disabled = true;
-       maquina = true 
-       console.log(maquina)
+       maquina = true ;
+      
       })
        
+function sorteioNumeroAliatorio()
+ {
+     idMaquina = Math.floor( Math.random()*9);
+     idMaquina.toString(); 
+     id = idMaquina.toString();
+     indice = posisaoSorteadas.indexOf(id); 
+     jogadorMaquina();
+ }
+
 function jogadorMaquina()
  {
-        
-     let idMaquina = Math.floor( Math.random()*9);
-         id = idMaquina.toString();
-      if(maquina == true)
-       {
-         setTimeout(jogar,1000);
-         cedulas = document.getElementById(id).style.backgroundImage = img;
-         maquina = false;
-       }
-      else
-       {
-         maquina = true
-       }  
-         
-   console.log(maquina)
-  
+    if(indice != -1)
+      {
+         while(indice != -1 && velha == true)
+         {
+           sorteioNumeroAliatorio()
+         }
+
+      }else
+        {
+          if(maquina == true && velha == true)
+           {
+             setTimeout(jogar,1000);
+             broqueioCedulas();
+             cedulas = document.getElementById(id).style.backgroundImage = img;
+             maquina = false;
+           }else
+           {
+             maquina = true;
+             broqueioCedulas();
+             
+           }  
+        }
  }
-    
  
+function broqueioCedulas()
+ { 
+      if(rodada == false)
+       {
+         estado = true;
+       }
+      else if(velha == false)
+       {
+         estado = true;
+       }
+       else
+       {
+         estado = false;
+       }  
+
+     for(let i = 0; i <= 8; i++)
+      {
+        document.getElementById(i).disabled = estado
+      }
+ } 
+ 
+document.getElementById("amigo").addEventListener("click",function(){
+  
+   reset();
+   document.getElementById("maquina").disabled = false;
+   document.getElementById("amigo").disabled = true;
+})
+
 
