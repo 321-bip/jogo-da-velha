@@ -87,7 +87,7 @@ h1{
     background-color: rgba(255, 255, 255, 0);
     width: 30px;
     height: 5px;
-    position: absolute;
+    position: fixed;
     left: 45%;
    /* transform: translateX(-50%);*/
     top: 50%;
@@ -110,7 +110,7 @@ h1{
     background-color: white;
     width: 30px;
     height: 5px;
-    position: absolute;
+    position: fixed;
     left: 45%;
    /* transform: translateX(-50%);*/
     top: 50%;
