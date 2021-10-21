@@ -94,15 +94,13 @@ h1{
 }
 .londenMaquinait{
     display: inline-block;
-    background-color:rgb(17, 10, 82);
+    background-color:rgb(17, 204, 95);
     width: 10%;
     height: 10px;
     position: absolute;
     left: 5%;
     transform: translatex(-50%);
     border-radius: 100%;
-   
-    
 }
 .londenMaquina2{
     display: inline-block;
@@ -115,7 +113,7 @@ h1{
 }
 .londenMaquinait2{
     display: inline-block;
-    background-color:rgb(17, 10, 82);
+    background-color:rgb(17, 204, 95);
     width: 10%;
     height: 10px;
     position: absolute;
@@ -128,7 +126,7 @@ h1{
 
 .londenMaquinait3{
     display: inline-block;
-    background-color:rgb(17, 10, 82);
+    background-color:rgb(17, 204, 95);
     width: 10%;
     height: 10px;
     position: absolute;
@@ -139,7 +137,7 @@ h1{
 
 .londenMaquinait4{
     display: inline-block;
-    background-color:rgb(17, 10, 82);
+    background-color:rgb(17, 204, 95);
     width: 10%;
     height: 10px;
     position: absolute;
