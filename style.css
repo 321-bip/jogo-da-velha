@@ -82,5 +82,94 @@ h1{
 .escolha{
     display: inline-block;
 }
+.londenMaquina{
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0);
+    width: 30px;
+    height: 5px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 7%;
+  
+}
+.londenMaquinait{
+    display: inline-block;
+    background-color:rgb(17, 10, 82);
+    width: 10%;
+    height: 5px;
+    position: absolute;
+    left: 5%;
+    transform: translatex(-50%);
+    border-radius: 100%;
+   
+    
+}
+.londenMaquina2{
+    display: inline-block;
+    background-color: white;
+    width: 30px;
+    height: 5px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 7%;
+  
+}
+.londenMaquinait2{
+    display: inline-block;
+    background-color:rgb(17, 10, 82);
+    width: 10%;
+    height: 5px;
+    position: absolute;
+    left: 100%;
+    transform: translateX(-50%);
+    border-radius: 100%;
+   
+    
+}
+.londenMaquina3{
+    display: inline-block;
+    background-color: white;
+    width: 30px;
+    height: 5px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 7%;
+  
+}
+.londenMaquinait3{
+    display: inline-block;
+    background-color:rgb(17, 10, 82);
+    width: 10%;
+    height: 5px;
+    position: absolute;
+    left: 5%;
+    transform: translateX(-50%);
+    border-radius: 100%;
+}
+.londenMaquina4{
+    display: inline-block;
+    background-color: white;
+    width: 30px;
+    height: 5px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 7%;
+  
+}
+.londenMaquinait4{
+    display: inline-block;
+    background-color:rgb(17, 10, 82);
+    width: 10%;
+    height: 5px;
+    position: absolute;
+    left: 100%;
+    transform: translateX(-50%);
+    border-radius: 100%;
+}
+
 
 

@@ -12,6 +12,17 @@ let img;
 let idMaquina;
 let indice;
 let estado;
+let deg; 
+let divRitentin = document.getElementById("londen")
+let divRitentin2 = document.getElementById("londen2")
+/*let divRitentin3 = document.getElementById("londen3")
+let divRitentin4 = document.getElementById("londen4")*/
+let anima;
+let ang = 0;
+let ang2 = 90;
+/*let ang3 = 270;
+let ang4 = 0*/
+
 let posisaoSorteadas = []; 
 const tabuleiro = [ ["","",""],
                     ["","",""],
@@ -286,11 +297,27 @@ function broqueioCedulas()
       }
  } 
  
-document.getElementById("amigo").addEventListener("click",function(){
+ document.getElementById("amigo").addEventListener("click",function(){
   
    reset();
    document.getElementById("maquina").disabled = false;
    document.getElementById("amigo").disabled = true;
 })
 
-
+function londen()
+ {  
+     divRitentin.style.transform='rotate('+ang+'deg)'
+     divRitentin2.style.transform='rotate('+ang2+'deg)'
+        ang++
+        ang2++
+        if(ang >360 && ang2 > 360)
+         {
+           ang = 0
+           ang2 = 90
+         }
+      anima = requestAnimationFrame(londen)
+ } 
+ 
+ 
+ londen()
+  
