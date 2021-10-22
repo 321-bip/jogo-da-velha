@@ -15,14 +15,13 @@ let estado;
 let deg; 
 let divRitentin = document.getElementById("londen")
 let divRitentin2 = document.getElementById("londen2")
-/*let divRitentin3 = document.getElementById("londen3")
-let divRitentin4 = document.getElementById("londen4")*/
+let div1 = document.querySelector('div.londenMaquinait')
+let div2 =document.querySelector('div.londenMaquinait2') 
+let div3 = document.querySelector('div.londenMaquinait3') 
+let div4 = document.querySelector('div.londenMaquinait4')
 let anima;
 let ang = 0;
 let ang2 = 90;
-/*let ang3 = 270;
-let ang4 = 0*/
-
 let posisaoSorteadas = []; 
 const tabuleiro = [ ["","",""],
                     ["","",""],
@@ -93,8 +92,8 @@ function jogar()
 
 function testeVitoria()
  {
-    
-    if(tabuleiro[0][0] == jogadorX && tabuleiro[0][1] == jogadorX && tabuleiro[0][2] == jogadorX)
+  
+   if(tabuleiro[0][0] == jogadorX && tabuleiro[0][1] == jogadorX && tabuleiro[0][2] == jogadorX)
      {
        velha = false;
        rodada = true;
@@ -198,6 +197,7 @@ function testeVitoria()
      }
      if(document.getElementById("maquina").disabled == true || velha == false)
        {
+         anima = cancelAnimationFrame(londen)
          broqueioCedulas()
        }
  }
@@ -263,11 +263,15 @@ function jogadorMaquina()
         {
           if(maquina == true && velha == true)
            {
-             setTimeout(jogar,1000);
+             if(rodada == false)
+              {
+                londen()
+              }
+             setTimeout(jogar,2400);
              broqueioCedulas();
              cedulas = document.getElementById(id).style.backgroundImage = img;
              maquina = false;
-           }else
+          }else
            {
              maquina = true;
              broqueioCedulas();
@@ -306,8 +310,12 @@ function broqueioCedulas()
 
 function londen()
  {  
-     divRitentin.style.transform='rotate('+ang+'deg)'
-     divRitentin2.style.transform='rotate('+ang2+'deg)'
+        divRitentin.style.transform='rotate('+ang+'deg)';
+        divRitentin2.style.transform='rotate('+ang2+'deg)';
+        div1.style.backgroundColor="green";
+        div2.style.backgroundColor="green";
+        div3.style.backgroundColor="green";
+        div4.style.backgroundColor="green";
         ang++
         ang2++
         if(ang >360 && ang2 > 360)
@@ -315,9 +323,20 @@ function londen()
            ang = 0
            ang2 = 90
          }
-      anima = requestAnimationFrame(londen)
+      if(rodada == false)
+       {
+         anima = requestAnimationFrame(londen)
+       }
+       else if(rodada == true)
+       {
+        div1.style.backgroundColor="";
+        div2.style.backgroundColor="";
+        div3.style.backgroundColor="";
+        div4.style.backgroundColor="";
+        anima = cancelAnimationFrame(londen)
+       }   
+     
+      
  } 
  
  
- londen()
-  
