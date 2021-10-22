@@ -188,6 +188,7 @@ function testeVitoria()
         velha = false;
         rodada = false;
         alert(`Jogador ${jogadorO} ganhou`);
+        
      }
     else if(velha == true && jogadas == 9)
      {
@@ -195,10 +196,10 @@ function testeVitoria()
         rodada = true;
         alert("enpato");
      }
-     if(document.getElementById("maquina").disabled == true || velha == false)
+     if(document.getElementById("maquina").disabled == true )
        {
-         anima = cancelAnimationFrame(londen)
-         broqueioCedulas()
+        
+         broqueioCedulas;
        }
  }
 
@@ -265,7 +266,7 @@ function jogadorMaquina()
            {
              if(rodada == false)
               {
-                londen()
+                londen
               }
              setTimeout(jogar,2400);
              broqueioCedulas();
@@ -301,21 +302,21 @@ function broqueioCedulas()
       }
  } 
  
- document.getElementById("amigo").addEventListener("click",function(){
+  document.getElementById("amigo").addEventListener("click",function(){
   
-   reset();
-   document.getElementById("maquina").disabled = false;
-   document.getElementById("amigo").disabled = true;
-})
+    reset();
+    document.getElementById("maquina").disabled = false;
+    document.getElementById("amigo").disabled = true;
+ })
 
 function londen()
  {  
         divRitentin.style.transform='rotate('+ang+'deg)';
         divRitentin2.style.transform='rotate('+ang2+'deg)';
-        div1.style.backgroundColor="green";
-        div2.style.backgroundColor="green";
-        div3.style.backgroundColor="green";
-        div4.style.backgroundColor="green";
+        div1.style.backgroundColor="black";
+        div2.style.backgroundColor="black";
+        div3.style.backgroundColor="black";
+        div4.style.backgroundColor="black";
         ang++
         ang2++
         if(ang >360 && ang2 > 360)
@@ -323,20 +324,28 @@ function londen()
            ang = 0
            ang2 = 90
          }
-      if(rodada == false)
-       {
-         anima = requestAnimationFrame(londen)
-       }
-       else if(rodada == true)
+        if(rodada == false)
+         {
+            anima = requestAnimationFrame(londen)
+         
+           if(velha == false)
+              {
+                 cancelAnimationFrame(anima)
+                 div1.style.backgroundColor="";
+                 div2.style.backgroundColor="";
+                 div3.style.backgroundColor="";
+                 div4.style.backgroundColor="";
+             }
+                
+          }
+       else
        {
         div1.style.backgroundColor="";
         div2.style.backgroundColor="";
         div3.style.backgroundColor="";
         div4.style.backgroundColor="";
-        anima = cancelAnimationFrame(londen)
        }   
      
-      
- } 
+} 
  
  
