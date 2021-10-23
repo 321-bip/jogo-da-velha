@@ -27,15 +27,33 @@ const tabuleiro = [ ["","",""],
                     ["","",""],
                     ["","",""], ];  
 
-                           
-document.querySelectorAll('button.cedula').forEach(function(button){
-    
-      button.addEventListener("click",function(event){
-          el = event.target
-          id = el.id;
-          jogar()
-     });
- });
+
+  function RegistrarEventos()
+  {
+    document.querySelectorAll('button.cedula').forEach(function(button){
+          
+            button.addEventListener("click",function(event){
+                el = event.target
+                id = el.id;
+                jogar()
+          });
+      });
+
+    document.getElementById("reset").addEventListener("click",reset);
+       
+    document.getElementById("maquina").addEventListener("click", function(){
+      document.getElementById("amigo").disabled = false;
+      document.getElementById("maquina").disabled = true;
+      maquina = true ;
+     
+     })
+
+    document.getElementById("amigo").addEventListener("click",function(){
+      reset();
+      document.getElementById("maquina").disabled = false;
+      document.getElementById("amigo").disabled = true;
+    })
+  }
            
 function jogar()
  {     
@@ -198,14 +216,13 @@ function testeVitoria()
      }
      if(document.getElementById("maquina").disabled == true )
        {
-        
-         broqueioCedulas;
+         broqueioCedulas();
        }
  }
 
 function reset()
  {
-    jogar;
+    //jogar;
     velha == true;
     jogadas = 0;
     posisaoSorteadas = [];
@@ -233,14 +250,7 @@ function reset()
      
   }
 
-       document.getElementById("reset").addEventListener("click",reset);
-       
-       document.getElementById("maquina").addEventListener("click", function(){
-       document.getElementById("amigo").disabled = false;
-       document.getElementById("maquina").disabled = true;
-       maquina = true ;
-      
-      })
+ 
        
 function sorteioNumeroAliatorio()
  {
@@ -266,7 +276,9 @@ function jogadorMaquina()
            {
              if(rodada == false)
               {
-                londen
+                londen()
+
+                
               }
              setTimeout(jogar,2400);
              broqueioCedulas();
@@ -301,13 +313,7 @@ function broqueioCedulas()
         document.getElementById(i).disabled = estado
       }
  } 
- 
-  document.getElementById("amigo").addEventListener("click",function(){
-  
-    reset();
-    document.getElementById("maquina").disabled = false;
-    document.getElementById("amigo").disabled = true;
- })
+
 
 function londen()
  {  
@@ -348,4 +354,4 @@ function londen()
      
 } 
  
- 
+RegistrarEventos();
