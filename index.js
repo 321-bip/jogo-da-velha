@@ -33,15 +33,15 @@ const tabuleiro = [ ["","",""],
     document.querySelectorAll('button.cedula').forEach(function(button){
           
             button.addEventListener("click",function(event){
-                el = event.target
+                el = event.target;
                 id = el.id;
-                jogar()
+                jogar();
           });
       });
 
     document.getElementById("reset").addEventListener("click",reset);
        
-    document.getElementById("maquina").addEventListener("click", function(){
+      document.getElementById("maquina").addEventListener("click", function(){
       document.getElementById("amigo").disabled = false;
       document.getElementById("maquina").disabled = true;
       maquina = true ;
@@ -90,9 +90,7 @@ function jogar()
              tabuleiro[2][2] = jogador;
             break;
          }
-            
             posisaoSorteadas.push(id);
-            console.log(posisaoSorteadas);
             cedulas = document.getElementById(id).style.backgroundImage = img;
             document.getElementById(id).disabled = true;
             rodada = !rodada;
@@ -100,12 +98,11 @@ function jogar()
             velha = true;
             testeVitoria();
 
-             if(document.getElementById("maquina").disabled == true)
-              {
-                broqueioCedulas();
-                estado = false;
-                sorteioNumeroAliatorio();
-              }
+            if(document.getElementById("maquina").disabled == true)
+            {
+              estado = false;
+              sorteioNumeroAliatorio();
+            }
  }
 
 function testeVitoria()
@@ -159,7 +156,7 @@ function testeVitoria()
        rodada = true;
        alert(`Jogador ${jogadorX} ganhou`);
      }
-     if(tabuleiro[0][0] == jogadorO && tabuleiro[0][1] == jogadorO && tabuleiro[0][2] == jogadorO)
+    if(tabuleiro[0][0] == jogadorO && tabuleiro[0][1] == jogadorO && tabuleiro[0][2] == jogadorO)
      {
         velha = false;
         rodada = false;
@@ -214,18 +211,18 @@ function testeVitoria()
         rodada = true;
         alert("enpato");
      }
-     if(document.getElementById("maquina").disabled == true )
+     if( (document.getElementById("maquina").disabled == true && velha == false) || (velha == false)  )
        {
-         broqueioCedulas();
+         broqueioCedulas(true);
        }
  }
 
 function reset()
  {
-    //jogar;
     velha == true;
     jogadas = 0;
     posisaoSorteadas = [];
+    broqueioCedulas(false);
 
    for(let linha = 0; linha <= 2; linha++)
     {
@@ -237,21 +234,17 @@ function reset()
       
    for(let i = 0; i <= 8; i++)
     {
-      
        cedulas = document.getElementById(i).style.backgroundImage = null;
-                 document.getElementById(i).disabled = false;
     } 
 
     if(rodada == false && document.getElementById("maquina").disabled == true)
      {
-       broqueioCedulas();
+      
        setTimeout(jogar,1000);
      }
      
   }
 
- 
-       
 function sorteioNumeroAliatorio()
  {
      idMaquina = Math.floor( Math.random()*9);
@@ -277,44 +270,35 @@ function jogadorMaquina()
              if(rodada == false)
               {
                 londen()
-
-                
               }
              setTimeout(jogar,2400);
-             broqueioCedulas();
+             broqueioCedulas(true);
              cedulas = document.getElementById(id).style.backgroundImage = img;
              maquina = false;
           }else
            {
              maquina = true;
-             broqueioCedulas();
-             
+             broqueioCedulas(false);
            }  
         }
  }
- 
-function broqueioCedulas()
- { 
-      if(rodada == false)
-       {
-         estado = true;
-       }
-      else if(velha == false)
-       {
-         estado = true;
-       }
-       else
-       {
-         estado = false;
-       }  
 
-     for(let i = 0; i <= 8; i++)
-      {
-        document.getElementById(i).disabled = estado
-      }
+function broqueioCedulas(broqueio)
+ {
+   if(rodada == true || velha == true || jogadas == 0)
+    {
+    for( i = 0; i <= 8; i++)
+     {
+       document.getElementById(i).disabled = broqueio;
+     }
+    }
+   else
+    {
+      document.getElementById(id).disabled = broqueio
+    } 
  } 
 
-
+ 
 function londen()
  {  
         divRitentin.style.transform='rotate('+ang+'deg)';
