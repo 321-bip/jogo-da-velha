@@ -1,25 +1,141 @@
-.conteiner_interno{
-    display:flex;
-    flex-direction:column;
-    align-items: center;
+*{
+    box-sizing: border-box;
 }
 
+body{
+    background-color: rgb(8, 92, 92);
+}
 .conteiner{
-    display: block;
-    border:solid 0.5px black;
-    width:20%;
-    height:250px;
+    width:250px;
+    height:330px;
+    background-color:rgb(228, 228, 57);
+    position:fixed;
+    left:50%;
+    transform:translatex(-50%);
+    padding: 5px;
+    top: 50px;
+}
+
+h1{
+    text-align:center;
+    margin-top: 0%;
+    font-size:20pt;
+}
+.conteiner_interno{
+    width: 240px;
+    height: 250px;
+    background-color: rgb(219, 219, 231);
+    position:fixed;
+    left:50%;
+    transform:translatex(-50%);
+    top: 45px;
+    padding-top:15px;
+}
+.cedula{
+    display: inline-block;
+    background-color: rgb(230, 146, 87);
+    width: 70px;
+    height: 70px;
+    position: relative;
+    transform:translatex(15%);
+    padding:1px;
+    color:black;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    background-size: 100% 100%;
+    
 }
 .opçoes{
-    display:flex;
-    flex-direction:row;
-    align-items: center;
-    gap:20px;
+    width:250px;
+    background-color:rgb(228, 228, 57);
+    position:fixed;
+    left:50%;
+    transform:translatex(-50%);
+    padding: 5px;
+    bottom: 1%;
+
     
 }
 .versos{
-    display:flex;
-    flex-direction:row;
-    align-items: center;
-    gap: 15px;
+    display: inline-block;
+}
+.reset{
+    display: inline-block;
+    width:60px;
+    
+    
+}
+.ctmaquina{
+    display: inline-block;
+    width:60px;
+    
+}
+.ctamigo{
+    display: inline-block;
+    width:60px;
+    
+}
+.versos{
+    display: inline-block;
+    width: 60%;
+    position: absolute;
+    left:50%;
+    transform:translateX(-20%);
+   
+}
+.escolha{
+    display: inline-block;
+}
+.londenMaquina{
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0);
+    width: 50px;
+    height: 10px;
+    position: fixed;
+    left: 39%;
+    top: 46%;
+  
+}
+.londenMaquinait{
+    display: inline-block;
+    width: 10%;
+    height: 10px;
+    position: absolute;
+    left: 5%;
+    transform: translatex(-50%);
+}
+.londenMaquina2{
+    display: inline-block;
+    width: 50px;
+    height: 10px;
+    position: fixed;
+    left: 39%;
+    top: 46%;
+  
+}
+.londenMaquinait2{
+    display: inline-block;
+    width: 10%;
+    height: 10px;
+    position: absolute;
+    left: 100%;
+    transform: translateX(-50%);    
+}
+
+.londenMaquinait3{
+    display: inline-block;
+    width: 10%;
+    height: 10px;
+    position: absolute;
+    left: 5%;
+    transform: translateX(-50%);
+}
+
+.londenMaquinait4{
+    display: inline-block;
+    width: 10%;
+    height: 10px;
+    position: absolute;
+    left: 100%;
+    transform: translateX(-50%);
 }
